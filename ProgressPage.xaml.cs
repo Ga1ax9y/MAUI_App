@@ -40,7 +40,10 @@ public partial class ProgressPage : ContentPage
     }
     void Cancel_Action(object sender, EventArgs e)
     {
-        Progress_lbl.Text = "Задание отменено";
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Progress_lbl.Text = "Задание отменено";
+        });
         cancelTokenSource.Cancel();
 
     }
