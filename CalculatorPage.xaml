@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stanishewski253505.CalculatorPage"
+             Title="CalculatorPage"
+             BackgroundColor ="#265073">
+    
+    <Grid Padding="16" RowSpacing="2" ColumnSpacing="2"
+          RowDefinitions="2*,*,*,*,*,*,*"
+          ColumnDefinitions="*,*,*,*">
+        <?вычисления?>
+        <Label x:Name="CurrentCalculation"
+               FontSize="22"
+               LineBreakMode="NoWrap"
+               Grid.ColumnSpan="4"
+               Text=""
+               TextColor="{StaticResource Light}"
+               HorizontalTextAlignment="End"
+               VerticalTextAlignment="Start"
+               Grid.Row="0"/>
+
+        <Label x:Name="resultText"
+               FontSize="64" FontAttributes="Bold" Text="0"
+               HorizontalTextAlignment="End"
+               VerticalTextAlignment="End"
+               TextColor="#F1FADA"
+               LineBreakMode="NoWrap" Grid.ColumnSpan="4" /> 
+
+
+        <?первая колонка?>
+        <Button   Text="√x" 
+                  x:Name="button_SqrtX"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="1" Grid.Column="0" 
+                  BackgroundColor="#9AD0C2" 
+                  Clicked="OnSqrtX" >
+        </Button >
+
+        
+        <Button   Text="C" 
+                  x:Name="button_C"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="2" Grid.Column="0" 
+                  BackgroundColor="#9AD0C2" 
+                  Clicked="OnClear" >
+        </Button >
+
+        
+        <Button   Text="7"  
+                  x:Name="button_7"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="3" Grid.Column="0" 
+                  BackgroundColor="#F1FADA" 
+                  Clicked="OnNumber" >
+        </Button >
+
+        
+        <Button    Text="4" 
+                   x:Name="button_4"
+                   FontSize="25"
+                   TextColor="Black" 
+                   Grid.Row="4" Grid.Column="0" 
+                   BackgroundColor="#F1FADA" 
+                   Clicked="OnNumber" >
+        </Button >
+
+        <Button    Text="1" 
+                   x:Name="button_1"
+                   FontSize="25"
+                   TextColor="Black" 
+                   Grid.Row="5" Grid.Column="0" 
+                   BackgroundColor="#F1FADA" 
+                   Clicked="OnNumber" >
+        </Button >
+
+        <Button   
+                   Text="0" 
+                   x:Name="button_0"
+                   FontSize="25"
+                   TextColor="Black"  
+                   Grid.Row="6" Grid.Column="0" 
+                   Grid.ColumnSpan="2"  
+                   BackgroundColor="#F1FADA" 
+                   Clicked="OnNumber" >
+        </Button >
+
+
+        <?вторая колонка?>
+        <Button   Text="x²" 
+                  x:Name="button_XX"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="1" Grid.Column="1" 
+                  BackgroundColor="#9AD0C2" 
+                  Clicked="OnXX" >
+        </Button >
+
+        <Button  Text="mod" 
+                 x:Name="button_Mod"
+                 FontSize="25"
+                 TextColor="Black" 
+                 Grid.Row="2" Grid.Column="1" 
+                 BackgroundColor="#9AD0C2" 
+                 Clicked="OnOperator" >
+        </Button >
+
+        <Button  Text="8" 
+                 x:Name="button_8"
+                 FontSize="25"
+                 TextColor="Black"  
+                 Grid.Row="3" Grid.Column="1" 
+                 BackgroundColor="#F1FADA" 
+                 Clicked="OnNumber" >
+        </Button >
+
+        <Button   Text="5" 
+                  x:Name="button_5"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="4" Grid.Column="1" 
+                  BackgroundColor="#F1FADA" 
+                  Clicked="OnNumber" >
+        </Button >
+
+        <Button   Text="2" 
+                  x:Name="button_2"
+                  FontSize="25"
+                  TextColor="Black"
+                  Grid.Row="5" Grid.Column="1" 
+                  BackgroundColor="#F1FADA" 
+                  Clicked="OnNumber" >
+        </Button >
+
+        <?третья колонка?>
+        <Button   Text="1/x" 
+                  x:Name="button_1X"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="1" Grid.Column="2" 
+                  BackgroundColor="#9AD0C2"  
+                  Clicked="OnDivX" >
+        </Button >
+
+        <Button   Text="+/-" 
+                  x:Name="button_Neg"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="2" Grid.Column="2" 
+                  BackgroundColor="#9AD0C2" 
+                  Clicked="OnNeg" >
+        </Button >
+
+        <Button   Text="9"  
+                  x:Name="button_9"
+                  FontSize="25"
+                  TextColor="Black"  
+                  Grid.Row="3" Grid.Column="2" 
+                  BackgroundColor="#F1FADA" 
+                  Clicked="OnNumber" >
+        </Button >
+
+        <Button   Text="6" 
+                  x:Name="button_6"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="4" Grid.Column="2" 
+                  BackgroundColor="#F1FADA" 
+                  Clicked="OnNumber" >
+        </Button >
+
+        <Button   Text="3" 
+                  x:Name="button_3"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="5" Grid.Column="2" 
+                  BackgroundColor="#F1FADA" 
+                  Clicked="OnNumber" >
+        </Button >
+
+        <Button   Text="," 
+                  x:Name="button_Com"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="6" Grid.Column="2" 
+                  BackgroundColor="#F1FADA" 
+                  Clicked="OnComma" >
+        </Button >
+        
+        <?четверая колонка?>
+        <Button   Text="⌫" 
+                  x:Name="button_RemOne"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="1" Grid.Column="3" 
+                  BackgroundColor="#9AD0C2"  
+                  Clicked="OnRemoveOne" >
+        </Button >
+
+        <Button   Text="÷" 
+                  x:Name="button_Div"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="2" Grid.Column="3" 
+                  BackgroundColor="#9AD0C2"  
+                  Clicked="OnOperator" >
+        </Button >
+
+        <Button   Text="×" 
+                  x:Name="button_Mul"
+                  FontSize="25"
+                  TextColor="Black" 
+                  Grid.Row="3" Grid.Column="3" 
+                  BackgroundColor="#9AD0C2" 
+                  Clicked="OnOperator" >
+        </Button >
+
+        <Button    Text="-" 
+                   x:Name="button_Min"
+                   FontSize="25"
+                   TextColor="Black" 
+                   Grid.Row="4" Grid.Column="3" 
+                   BackgroundColor="#9AD0C2" 
+                   Clicked="OnOperator" >
+        </Button >
+
+        <Button    Text="+"
+                   x:Name="button_Plus"
+                   FontSize="25"
+                   TextColor="Black" 
+                   Grid.Row="5" Grid.Column="3" 
+                   BackgroundColor="#9AD0C2" 
+                   Clicked="OnOperator" >
+        </Button >
+
+        <Button    Text="=" 
+                   x:Name="button_Equal"
+                   FontSize="25"
+                   TextColor="Black" 
+                   Grid.Row="6" Grid.Column="3" 
+                   BackgroundColor="#2D9596" 
+                   Clicked="OnCalculate" >
+        </Button >
+
+
+    </Grid>
+</ContentPage>

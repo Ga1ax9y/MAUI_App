@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Stanishewski253505.ProgressPage"
+             Title="ProgressPage">
+    <Grid Padding="16" RowDefinitions="*,*,*" ColumnDefinitions="*,*,*,*,*,*,*">
+
+
+
+        <Label x:Name="Progress_lbl"
+            FontSize="30"
+            Text="Welcome to .NET MAUI!"
+            HorizontalOptions="Center"
+            TextColor="Black"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="7"
+       
+       />
+
+        <ProgressBar 
+                
+             x:Name="MyProgress"   
+             Progress="0"
+             ProgressColor="ForestGreen"      
+             ScaleY="2"
+             Grid.Row="1"
+             Grid.ColumnSpan="6"
+            VerticalOptions="Center"
+            
+            
+        />
+        
+        <Label 
+            x:Name="Procent_lbl"
+            Text="0%"
+            Grid.Row="1" 
+            Grid.Column="6" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="20"
+            
+        />
+        
+        <Button   
+          Text="Start" 
+          x:Name="Start_btn"
+          Grid.Row="2" 
+          Grid.Column="1"    
+          Grid.ColumnSpan="2"
+          VerticalOptions="End"
+          BackgroundColor="ForestGreen" 
+
+          Clicked="Start_Action"
+          >
+        </Button >
+        
+        
+        <Button   
+         Text="Cancel" 
+         x:Name="Cancel_btn" 
+         Grid.Row="2"
+         Grid.Column="4"  
+         Grid.ColumnSpan="2"
+         VerticalOptions="End"
+         BackgroundColor="Red" 
+         Clicked="Cancel_Action"
+         IsEnabled="False"
+         
+          >
+        </Button >
+        
+        
+    </Grid>
+
+
+</ContentPage>
