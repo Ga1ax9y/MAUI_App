@@ -20,5 +20,9 @@
     Title="ProgressBar"
     ContentTemplate="{DataTemplate local:ProgressPage}"
     Route="ProgressPage" />
+    <ShellContent
+        Title="SQLite"
+        ContentTemplate="{DataTemplate local:SQLitePage}"
+        Route="SQLitePage" />
     
 </Shell>
