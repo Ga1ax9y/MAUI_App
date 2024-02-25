@@ -11,16 +11,16 @@ namespace Stanishewski253505.Entities
     public class RoomService
     {
         public RoomService() { }
-        public RoomService(int serviceId,string name,int roomid) 
+        public RoomService(int serviceId,string description,int roomid) 
         { 
             this.ServiceId = serviceId;
-            this.Name = name;
+            this.Description = description;
             this.RoomId = roomid;
         }
         [PrimaryKey,AutoIncrement,Indexed]
         [Column("Id")]
         public int ServiceId { get; set; }
-        public string Name { get; set; }
+        public string Description { get; set; }
         [Indexed]
         public int RoomId { get; set; }
         

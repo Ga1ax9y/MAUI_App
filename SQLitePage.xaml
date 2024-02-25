@@ -6,20 +6,19 @@
              Loaded="NewPickerGroup"
              >
     <StackLayout Padding="8">
-        <Label x:Name="header" Text="Выберите категорию номера" FontSize="18" />
         <Picker x:Name="RoomPicker" 
-                Title = "Категория номера" 
-                SelectedIndexChanged="PickerSelectedIndexChanged" 
-                ItemDisplayBinding="{Binding Name}" 
-                ItemsSource="{Binding RoomCategories}">
-
-
+                
+                Title="Выберите категорию номера"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedIndexChanged="PickerSelectedIndexChanged">
         </Picker>
-        <CollectionView x:Name="CollView" Grid.Row="1">
+        <Label Text="Перечень предоставляемых услуг:" FontSize="30" />
+        <CollectionView 
+            x:Name="CollView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame HeightRequest="50" WidthRequest="300">
-                        <Label Text="{Binding Name}" HeightRequest="20"></Label>
+                    <Frame >
+                        <Label Text="{Binding Description}" ></Label>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

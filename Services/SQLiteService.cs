@@ -12,7 +12,7 @@ namespace Stanishewski253505.Services
 {
     public class SQLiteService : IDbService
     {
-        private SQLiteConnection database;
+        public SQLiteConnection database;
 
         public IEnumerable<RoomCategory> GetAllRooms()
         {
@@ -26,28 +26,58 @@ namespace Stanishewski253505.Services
         }
         public void Init()
         {
-            if (database != null)
-                return;
+            if (File.Exists(Path.Combine(FileSystem.AppDataDirectory, "MyData.db")))
+            {
+                 database = new(Path.Combine(FileSystem.AppDataDirectory, "MyData.db"));
+            }
+            else
+            {
 
-            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "MyData.db");
-            database = new SQLiteConnection(databasePath);
-            database.CreateTable<RoomCategory>();
+                database =new( Path.Combine(FileSystem.AppDataDirectory, "MyData.db"));
+                database.CreateTable<RoomCategory>();
+                database.CreateTable<RoomService>();
 
-            var Room1 = new RoomCategory(0, "Standart", 500);
-            var Room2 = new RoomCategory(1, "Superior", 1250);
-            var Room3 = new RoomCategory(2, "VIP", 2500);
-            database.Insert(Room1);
-            database.Insert(Room2);
-            database.Insert(Room3);
-            database.CreateTable<RoomService>();
-            var room_service1 = new RoomService(0,"clean",0);
-            var room_service2 = new RoomService(1,"wine",1);
-            var room_service3 = new RoomService(2,"food",2);
-            database.Insert(room_service1);
-            database.Insert(room_service2);
-            database.Insert(room_service3);
+                database.Insert(new RoomCategory()
 
+                {
+                    Name = "Standart",
+                    Id = 0,
+                    Price = 500
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Cleaning",
+                    ServiceId = 0,
+                    RoomId = 0,
+                });
+                database.Insert(new RoomCategory()
+                {
+                    Name = "VIP",
+                    Id = 1,
+                    Price = 2500
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Free Food",
+                    ServiceId = 1,
+                    RoomId = 1,
+                });
+                database.Insert(new RoomCategory()
+                {
+                    Name = "Delux",
+                    Id = 2,
+                    Price = 5000
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Free Wine",
+                    ServiceId = 2,
+                    RoomId = 2,
+                });
 
+                //database.DeleteAll<RoomCategory>();
+
+            }
 
 
         }
