@@ -21,8 +21,14 @@ public partial class ProgressPage : ContentPage
         Cancel_btn.IsEnabled = true;
         Start_btn.IsEnabled = false;
         MyProgress.Progress = 0;
-        Procent_lbl.Text = "0%";
-        Progress_lbl.Text = "Вычисление...";
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Procent_lbl.Text = "0%";
+        });
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Progress_lbl.Text = "Вычисление...";
+        });
 
         var progress = new Progress<double>(percent =>
         {
@@ -31,7 +37,7 @@ public partial class ProgressPage : ContentPage
             MyProgress.Progress = percent;
         });
 
-        double res = await RectangleIntegration(progress);
+        double res = await Task.Run(()=> RectangleIntegration(progress));
         if (res !=228)
         Progress_lbl.Text = res.ToString();
         Start_btn.IsEnabled = true;

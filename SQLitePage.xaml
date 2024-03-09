@@ -3,25 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Stanishewski253505.SQLitePage"
              Title="SQLitePage"
-             Loaded="NewPickerGroup"
              >
-    <StackLayout Padding="8">
+  <ScrollView>
+        
+        
+    <VerticalStackLayout Spacing="10">
         <Picker x:Name="RoomPicker" 
                 
                 Title="Выберите категорию номера"
                 ItemDisplayBinding="{Binding Name}"
-                SelectedIndexChanged="PickerSelectedIndexChanged">
+                Loaded="RoomPicker_Loaded"
+                SelectedIndexChanged="PickerSelectedIndexChanged"
+                >
         </Picker>
+        
         <Label Text="Перечень предоставляемых услуг:" FontSize="30" />
+        
         <CollectionView 
-            x:Name="CollView">
+            x:Name="CollView"
+            HorizontalOptions="Center"
+            WidthRequest="250">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame >
-                        <Label Text="{Binding Description}" ></Label>
-                    </Frame>
+                        <Frame HeightRequest="60"
+                               Margin="10">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Description}"/>
+                            </HorizontalStackLayout>
+                        </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </VerticalStackLayout>
+  </ScrollView>
 </ContentPage>

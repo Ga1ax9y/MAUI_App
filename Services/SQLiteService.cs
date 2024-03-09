@@ -13,65 +13,138 @@ namespace Stanishewski253505.Services
     public class SQLiteService : IDbService
     {
         public SQLiteConnection database;
-
+        
         public IEnumerable<RoomCategory> GetAllRooms()
         {
-            Init();
             return database.Table<RoomCategory>().ToList();
         }
         public IEnumerable<RoomService> GetRoomService(int id)
         {
-            Init();         
             return database.Table<RoomService>().Where(p=>p.RoomId == id).ToList();
         }
         public void Init()
         {
-            if (File.Exists(Path.Combine(FileSystem.AppDataDirectory, "MyData.db")))
+            if (File.Exists(Path.Combine(FileSystem.AppDataDirectory, "MyData2.db")))
             {
-                 database = new(Path.Combine(FileSystem.AppDataDirectory, "MyData.db"));
+                 database = new(Path.Combine(FileSystem.AppDataDirectory, "MyData2.db"));
             }
             else
             {
-
-                database =new( Path.Combine(FileSystem.AppDataDirectory, "MyData.db"));
+                database =new(Path.Combine(FileSystem.AppDataDirectory, "MyData2.db"));
                 database.CreateTable<RoomCategory>();
                 database.CreateTable<RoomService>();
-
+                //Стандартная категория
                 database.Insert(new RoomCategory()
-
                 {
                     Name = "Standart",
                     Id = 0,
                     Price = 500
                 });
+                //Услуги стандартной категории
                 database.Insert(new RoomService()
                 {
-                    Description = "Cleaning",
+                    Description = "Одноразовое питание",
                     ServiceId = 0,
                     RoomId = 0,
                 });
+                database.Insert(new RoomService()
+                {
+                    Description = "Обслуживание номера",
+                    ServiceId = 1,
+                    RoomId = 0,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Бесплатный интернет",
+                    ServiceId = 2,
+                    RoomId = 0,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Предоставление халатов",
+                    ServiceId = 3,
+                    RoomId = 0,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Бесплатная экскурсия",
+                    ServiceId = 4,
+                    RoomId = 0,
+                });
+                //VIP категория
                 database.Insert(new RoomCategory()
                 {
                     Name = "VIP",
                     Id = 1,
                     Price = 2500
                 });
+                //Услуги VIP категории
                 database.Insert(new RoomService()
                 {
-                    Description = "Free Food",
-                    ServiceId = 1,
+                    Description = "Двухразовое питание",
+                    ServiceId = 5,
                     RoomId = 1,
                 });
+                database.Insert(new RoomService()
+                {
+                    Description = "Доступ в сауну",
+                    ServiceId = 6,
+                    RoomId = 1,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Доступ к сейфу",
+                    ServiceId = 7,
+                    RoomId = 1,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Скидка на напитки",
+                    ServiceId = 8,
+                    RoomId = 1,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Скидка на автобус",
+                    ServiceId = 9,
+                    RoomId = 1,
+                });
+                // Delux категория
                 database.Insert(new RoomCategory()
                 {
                     Name = "Delux",
                     Id = 2,
                     Price = 5000
                 });
+                // Услуги delux категории
                 database.Insert(new RoomService()
                 {
-                    Description = "Free Wine",
-                    ServiceId = 2,
+                    Description = "Трехразовое питание",
+                    ServiceId = 10,
+                    RoomId = 2,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Доступ в ♂Gym♂",
+                    ServiceId = 11,
+                    RoomId = 2,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Выведение из запоя",
+                    ServiceId = 12,
+                    RoomId = 2,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Услуги прачечной",
+                    ServiceId = 13,
+                    RoomId = 2,
+                });
+                database.Insert(new RoomService()
+                {
+                    Description = "Ежедневный массаж",
+                    ServiceId = 14,
                     RoomId = 2,
                 });
 

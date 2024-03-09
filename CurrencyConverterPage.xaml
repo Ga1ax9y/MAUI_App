@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stanishewski253505.CurrencyConverterPage"
+             Title="CurrencyConverter"
+             Loaded="LoadedLabel">
+    <ScrollView >
+        <HorizontalStackLayout Spacing="25" Padding="16">
+            <VerticalStackLayout>
+            <HorizontalStackLayout Spacing="20" Padding="16">
+                <Label x:Name="Doll"                   
+                    Text="Выберите дату:"
+                    FontSize="Medium">
+                </Label>
+                <DatePicker x:Name="DatePick"
+                    DateSelected="GetDateFromPicker"
+                     Format="dd/mm/yyyy"
+                    FontSize="Medium"></DatePicker>
+            </HorizontalStackLayout>
+            <CollectionView 
+            x:Name="CollView"
+            HorizontalOptions="Start"
+            WidthRequest="575">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="5"
+                              ColumnSpacing="1"
+                              RowDefinitions="*,*,*,*,*,*"
+                              ColumnDefinitions="*,*,*,4*,*">
+                            <RadioButton 
+                                Value="{Binding Cur_Abbreviation}"
+                                Grid.Column="0" 
+                                GroupName="Currencies"
+                                CheckedChanged="RadioButtonChoise">                               
+                            </RadioButton>
+                            <Label FontSize="Medium" Text="{Binding Cur_Abbreviation}" Grid.Column="1"/>
+                            <Label FontSize="Medium" Text="{Binding Cur_Scale}" Grid.Column="2"/>
+                            <Label FontSize="Medium" Text="{Binding Cur_Name}" Grid.Column="3"/>
+                            <Label FontSize="Medium" Text="{Binding Cur_OfficialRate}" Grid.Column="4"/>
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+            <Entry x:Name="BYN_entry"
+                Placeholder="BYN" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                HeightRequest="75" 
+                WidthRequest="100"
+                Keyboard="Numeric"
+                TextChanged="Byn_changed">
+            </Entry>
+            <Image 
+                Source="loop.png" WidthRequest="30" HeightRequest="30">
+            </Image>
+            <Entry x:Name="CUR_entry"
+                Placeholder="CUR" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                HeightRequest="75" 
+                WidthRequest="100"
+                TextChanged="Cur_changed"
+                >
+                
+            </Entry>
+        </HorizontalStackLayout>
+    </ScrollView>
+</ContentPage>

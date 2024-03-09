@@ -5,25 +5,22 @@ namespace Stanishewski253505;
 
 public partial class SQLitePage : ContentPage
 {
-    SQLiteService ss= new SQLiteService();
-    public SQLitePage()
+    private readonly IDbService _dBService;
+    public SQLitePage(IDbService dbService)
 	{
 		InitializeComponent();
+        _dBService = dbService;
         
     }
     void PickerSelectedIndexChanged(object sender, EventArgs e)
     {
-        List<RoomService> service = new List<RoomService>();
-        service = (List<RoomService>)ss.GetRoomService(RoomPicker.SelectedIndex);
-
-        CollView.ItemsSource = ss.GetRoomService(RoomPicker.SelectedIndex);
+      
+        CollView.ItemsSource = _dBService.GetRoomService(RoomPicker.SelectedIndex);
 
     }
-    void NewPickerGroup(object sender, EventArgs e)
+    private void RoomPicker_Loaded(object sender, EventArgs e)
     {
-        List<RoomCategory> rooms = new List<RoomCategory>();
-        rooms = (List<RoomCategory>)ss.GetAllRooms();
-        RoomPicker.ItemsSource = rooms;
-        
+        _dBService.Init();
+        RoomPicker.ItemsSource = (List<RoomCategory>)_dBService.GetAllRooms();
     }
 }
