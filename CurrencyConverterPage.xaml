@@ -6,18 +6,22 @@
              Loaded="LoadedLabel">
     <ScrollView >
         <HorizontalStackLayout Spacing="25" Padding="16">
-            <VerticalStackLayout>
-            <HorizontalStackLayout Spacing="20" Padding="16">
-                <Label x:Name="Doll"                   
-                    Text="Выберите дату:"
-                    FontSize="Medium">
-                </Label>
-                <DatePicker x:Name="DatePick"
-                    DateSelected="GetDateFromPicker"
-                     Format="dd/mm/yyyy"
-                    FontSize="Medium"></DatePicker>
-            </HorizontalStackLayout>
-            <CollectionView 
+            <VerticalStackLayout Spacing="16">
+                
+                    <Label Text="Курс белорусского рубля" FontSize="Header"></Label>
+                    <HorizontalStackLayout Spacing="20">
+                        <Label x:Name="Doll"                   
+                            Text="На дату:"
+                            FontSize="Large">
+                        </Label>
+                        <DatePicker 
+                            x:Name="DatePick"
+                            DateSelected="GetDateFromPicker"
+                            Format="dd/mm/yyyy"
+                            FontSize="Medium"></DatePicker>
+                    </HorizontalStackLayout>
+
+                <CollectionView 
             x:Name="CollView"
             HorizontalOptions="Start"
             WidthRequest="575">
@@ -43,28 +47,47 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
-            <Entry x:Name="BYN_entry"
-                Placeholder="BYN" 
-                HorizontalOptions="Center" 
-                VerticalOptions="Center" 
-                HeightRequest="75" 
-                WidthRequest="100"
-                Keyboard="Numeric"
-                TextChanged="Byn_changed">
-            </Entry>
-            <Image 
-                Source="loop.png" WidthRequest="30" HeightRequest="30">
-            </Image>
-            <Entry x:Name="CUR_entry"
-                Placeholder="CUR" 
-                HorizontalOptions="Center" 
-                VerticalOptions="Center" 
-                HeightRequest="75" 
-                WidthRequest="100"
-                TextChanged="Cur_changed"
-                >
-                
-            </Entry>
+            <VerticalStackLayout VerticalOptions="Center">
+                <HorizontalStackLayout Spacing="15">
+                    <VerticalStackLayout>
+                        <Image 
+                            Source="belarus.png" 
+                            WidthRequest="40" 
+                            HeightRequest="40">
+                        </Image>
+                        <Entry x:Name="BYN_entry"
+                            Placeholder="BYN" 
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center" 
+                            HeightRequest="75" 
+                            WidthRequest="100"
+                            Keyboard="Numeric"
+                            Completed="Byn_changed">
+                        </Entry>
+                    </VerticalStackLayout>
+                    <Image 
+                         Source="loop.png" 
+                         WidthRequest="40" 
+                         HeightRequest="40" 
+                         VerticalOptions="Center">
+                    </Image>
+                    <VerticalStackLayout>
+                        <Image 
+                            Source="currency.png" 
+                            WidthRequest="40" 
+                            HeightRequest="40">
+                        </Image>
+                        <Entry x:Name="CUR_entry"
+                              Placeholder="CUR" 
+                              HorizontalOptions="Center" 
+                              VerticalOptions="Center" 
+                              HeightRequest="75" 
+                              WidthRequest="100"
+                              Completed="Cur_changed" >
+                        </Entry>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
         </HorizontalStackLayout>
     </ScrollView>
 </ContentPage>

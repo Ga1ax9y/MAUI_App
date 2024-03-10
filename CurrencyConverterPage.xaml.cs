@@ -29,41 +29,44 @@ public partial class CurrencyConverterPage : ContentPage
     void Byn_changed(object sender, EventArgs e)
     {
 
-            decimal num;
-            if (Decimal.TryParse(BYN_entry.Text, out num))
+            double num;
+            if (Double.TryParse(BYN_entry.Text, out num))
             {
                 Rate? curr_rate;
                 curr_rate = RatesList.Find(x => x.Cur_Abbreviation == CurrentCurrency);
-                decimal result = 0;
+                double result = 0;
                 if (curr_rate != null)
                 {
-                    result = num / (decimal)curr_rate.Cur_OfficialRate;
+                    result = num / (double)curr_rate.Cur_OfficialRate;
+                    result *= (double)curr_rate.Cur_Scale;
                     CUR_entry.Text = result.ToString($"F{3}");
+                    return; 
                 }
             }
             else
             {
-                CUR_entry.Text = "Error";
+                CUR_entry.Text = "";
             }
     }
     void Cur_changed(object sender, EventArgs e)
     {
 
-            decimal num;
-            if (Decimal.TryParse(CUR_entry.Text, out num))
+            double num;
+            if (Double.TryParse(CUR_entry.Text, out num))
             {
                 Rate? curr_rate;
                 curr_rate = RatesList.Find(x => x.Cur_Abbreviation == CurrentCurrency);
-                decimal result = 0;
+                double result = 0;
                 if (curr_rate != null)
                 {
-                    result = num * (decimal)curr_rate.Cur_OfficialRate;
+                    result = num * (double)curr_rate.Cur_OfficialRate;
+                    result /= curr_rate.Cur_Scale;
                     BYN_entry.Text = result.ToString($"F{3}");
                 }
             }
             else
             {
-                BYN_entry.Text = "Error";
+                BYN_entry.Text = "";
             }
     }
     void RadioButtonChoise(object sender, EventArgs e)
