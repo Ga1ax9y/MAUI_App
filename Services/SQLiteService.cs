@@ -37,7 +37,7 @@ namespace Stanishewski253505.Services
                 database.Insert(new RoomCategory()
                 {
                     Name = "Standart",
-                    Id = 0,
+                    Id = 1,
                     Price = 500
                 });
                 //Услуги стандартной категории
@@ -75,7 +75,7 @@ namespace Stanishewski253505.Services
                 database.Insert(new RoomCategory()
                 {
                     Name = "VIP",
-                    Id = 1,
+                    Id = 2,
                     Price = 2500
                 });
                 //Услуги VIP категории
@@ -113,7 +113,7 @@ namespace Stanishewski253505.Services
                 database.Insert(new RoomCategory()
                 {
                     Name = "Delux",
-                    Id = 2,
+                    Id = 3,
                     Price = 5000
                 });
                 // Услуги delux категории

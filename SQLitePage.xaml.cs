@@ -15,7 +15,8 @@ public partial class SQLitePage : ContentPage
     void PickerSelectedIndexChanged(object sender, EventArgs e)
     {
       
-        CollView.ItemsSource = _dBService.GetRoomService(RoomPicker.SelectedIndex);
+        var item = RoomPicker.SelectedItem as RoomCategory;
+        CollView.ItemsSource = _dBService.GetRoomService(item.Id);
 
     }
     private void RoomPicker_Loaded(object sender, EventArgs e)
